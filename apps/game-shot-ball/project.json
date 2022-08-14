@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/game-shot-ball/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/game-shot-ball",
+        "index": "apps/game-shot-ball/src/index.html",
+        "baseHref": "/",
+        "main": "apps/game-shot-ball/src/main.tsx",
+        "polyfills": "apps/game-shot-ball/src/polyfills.ts",
+        "tsConfig": "apps/game-shot-ball/tsconfig.app.json",
+        "assets": [
+          "apps/game-shot-ball/src/favicon.ico",
+          "apps/game-shot-ball/src/assets"
+        ],
+        "styles": ["apps/game-shot-ball/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/game-shot-ball/src/environments/environment.ts",
+              "with": "apps/game-shot-ball/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "game-shot-ball:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "game-shot-ball:build:development"
+        },
+        "production": {
+          "buildTarget": "game-shot-ball:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/game-shot-ball/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/game-shot-ball"],
+      "options": {
+        "jestConfig": "apps/game-shot-ball/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
