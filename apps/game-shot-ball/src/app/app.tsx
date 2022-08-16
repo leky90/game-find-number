@@ -23,7 +23,11 @@ export function App() {
       {status === 'stop' && (
         <div className={styles['board-result']}>
           <h1>Congrulation!</h1>
-          <p>You finished this game in {score} seconds</p>
+          <p>
+            You finished this game in{' '}
+            <strong style={{ color: 'red' }}>{score} seconds</strong>
+          </p>
+          <button onClick={replay}>Re-Play</button>
         </div>
       )}
 
