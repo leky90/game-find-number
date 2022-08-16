@@ -9,9 +9,9 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/game-shot-ball",
+        "outputPath": "docs",
         "index": "apps/game-shot-ball/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/game-find-number/",
         "main": "apps/game-shot-ball/src/main.tsx",
         "polyfills": "apps/game-shot-ball/src/polyfills.ts",
         "tsConfig": "apps/game-shot-ball/tsconfig.app.json",
