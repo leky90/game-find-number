@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@game-canvas-2d/data-access": ["libs/data-access/src/index.ts"],
+      "@game-canvas-2d/types": ["libs/types/src/index.ts"],
+      "@game-canvas-2d/utils": ["libs/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

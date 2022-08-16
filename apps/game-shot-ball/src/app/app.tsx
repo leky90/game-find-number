@@ -1,12 +1,33 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useRef } from 'react';
+import useGameplay from './use-gameplay/use-gameplay';
 import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
 
 export function App() {
+  const canvasRef = useRef(null);
+
+  const { play, replay, status, score } = useGameplay({ ref: canvasRef });
+
   return (
     <>
-      <NxWelcome title="game-shot-ball" />
-      <div />
+      {status === 'idle' && (
+        <button onClick={play} className={styles['play']}>
+          Play
+        </button>
+      )}
+      {status === 'running' && (
+        <button onClick={replay} className={styles['re-play']}>
+          Re-Play
+        </button>
+      )}
+      {status === 'stop' && (
+        <div className={styles['board-result']}>
+          <h1>Congrulation!</h1>
+          <p>You finished this game in {score} seconds</p>
+        </div>
+      )}
+
+      <canvas ref={canvasRef}></canvas>
     </>
   );
 }
